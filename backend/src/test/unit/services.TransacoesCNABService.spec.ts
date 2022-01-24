@@ -1,4 +1,4 @@
-import TransacoesCNABService from 'src/services/TransacoesCNABService';
+import TransacoesCNABService from '../../modules/TransacoesParser';
 import { transacoesCNAB, transacoesObjeto } from '../fixture/transacao.fixture';
 
 describe('TransacoesCNABService', () => {

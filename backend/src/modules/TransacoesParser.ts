@@ -1,14 +1,17 @@
-export default class TransacoesCNABService {
-  parse(registrosCNAB: string[]): Transacao[] {
-    return registrosCNAB.reduce((registros: Transacao[], registro: string) => {
-      if (registro) {
-        registros.push(this.parseTransacaoCNAB(registro));
-      }
-      return registros;
-    }, []);
+export default class TransacoesParserService {
+  parse(registrosCNAB: string[]): ITransacaoDTO[] {
+    return registrosCNAB.reduce(
+      (registros: ITransacaoDTO[], registro: string) => {
+        if (registro) {
+          registros.push(this.parseTransacaoCNAB(registro));
+        }
+        return registros;
+      },
+      [],
+    );
   }
 
-  private parseTransacaoCNAB = (line: string): Transacao => {
+  private parseTransacaoCNAB = (line: string): ITransacaoDTO => {
     const tipo = line.substring(0, 1).trim();
     const data = line.substring(1, 9).trim();
     const valor = line.substring(9, 19).trim();

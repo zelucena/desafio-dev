@@ -1,4 +1,4 @@
-interface Transacao {
+interface ITransacaoDTO {
   tipo: number;
   data: Date;
   valor: number;
@@ -9,7 +9,7 @@ interface Transacao {
   nomeLoja: string;
 }
 
-interface TipoTransacao {
+interface ITipoTransacaoDTO {
   tipo: number;
   descricao: string;
   natureza: 'ENTRADA' | 'SAIDA';
