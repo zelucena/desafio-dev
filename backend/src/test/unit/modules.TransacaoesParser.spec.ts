@@ -1,7 +1,7 @@
 import TransacoesCNABService from '../../modules/TransacoesParser';
 import { transacoesCNAB, transacoesObjeto } from '../fixture/transacao.fixture';
 
-describe('TransacoesCNABService', () => {
+describe('modules/TransacoesParser', () => {
   test('Parse string[] => Transacao[]', () => {
     const transacoesCNABService = new TransacoesCNABService();
     const resultado = transacoesCNABService.parse(transacoesCNAB);
