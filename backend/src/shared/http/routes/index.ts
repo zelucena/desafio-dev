@@ -1,11 +1,12 @@
 import { NextFunction, Request, Response, Router } from 'express';
 import multer from 'multer';
 import AppError from '../../errors/AppError';
-import { postCNAB } from 'src/controllers/CNABController';
+import { getCNAB, postCNAB } from 'src/controllers/CNABController';
 
 const routes = Router();
 const upload = multer();
 
+routes.get('/cnab', getCNAB);
 routes.post('/cnab', upload.single('cnab'), postCNAB);
 
 routes.use((error: Error, req: Request, res: Response, next: NextFunction) => {

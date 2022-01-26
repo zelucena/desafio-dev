@@ -21,11 +21,24 @@ export const postCNAB = async (
     const transacoes = transacoesCNABService.parse(linhas);
 
     const transacaoService = new TransacaoService();
-    const entidades = await transacaoService.salvar(transacoes);
+    const entidades = await transacaoService.saveAll(transacoes);
 
     return res.json(entidades);
   } catch (e) {
-    console.log(e);
+    next(e);
+  }
+};
+
+export const getCNAB = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const transacaoService = new TransacaoService();
+    const transacaoes = await transacaoService.fetch();
+    return res.json(transacaoes);
+  } catch (e) {
     next(e);
   }
 };

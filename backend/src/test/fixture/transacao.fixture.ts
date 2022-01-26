@@ -36,33 +36,3 @@ export const transacoesObjeto = [
     nomeLoja: 'MERCEARIA 3 IRMÃOS',
   },
 ];
-
-export const transacoesDB = [
-  {
-    tipoTransacaoId: 3,
-    dataOcorrencia: '2019-03-01T18:34:53.000Z',
-    valorMovimentacao: 142,
-    cpfBeneficiario: '09620676017',
-    numeroCartao: '4753****3153',
-    donoLoja: 'JOÃO MACEDO',
-    nomeLoja: 'BAR DO JOÃO',
-  },
-  {
-    tipoTransacaoId: 5,
-    dataOcorrencia: '2019-03-01T17:56:07.000Z',
-    valorMovimentacao: 132,
-    cpfBeneficiario: '55641815063',
-    numeroCartao: '3123****7687',
-    donoLoja: 'MARIA JOSEFINA',
-    nomeLoja: 'LOJA DO Ó - MATRIZ',
-  },
-  {
-    tipoTransacaoId: 3,
-    dataOcorrencia: '2019-03-01T20:27:12.000Z',
-    valorMovimentacao: 122,
-    cpfBeneficiario: '84515254073',
-    numeroCartao: '6777****1313',
-    donoLoja: 'MARCOS PEREIRA',
-    nomeLoja: 'MERCADO DA AVENIDA',
-  },
-];
