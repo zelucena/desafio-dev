@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import useFetch from "use-http";
 import BootstrapTable from "react-bootstrap-table-next";
@@ -7,7 +7,6 @@ import { Row, Col, Form } from "react-bootstrap";
 
 const TransacoesForm = () => {
   const [transacoes, setTransacoes] = useState([]);
-  console.log(transacoes);
   const {
     register,
     handleSubmit,
@@ -15,10 +14,9 @@ const TransacoesForm = () => {
     formState: { errors },
   } = useForm();
 
-  const { get, post, response, loading, error, request } = useFetch(
-    "http://localhost:3333",
-    { cachePolicy: "no-cache" }
-  );
+  const { get, post, response, loading } = useFetch("http://localhost:3333", {
+    cachePolicy: "no-cache",
+  });
 
   const fetchTransacoes = async () => {
     const payload = await get("/cnab");
@@ -30,23 +28,22 @@ const TransacoesForm = () => {
   const postTransacoes = async (payload) => {
     const formData = new FormData();
     formData.append("cnab", payload.cnab[0]);
-    console.log(request.cache);
-    const responseBody = await post("/cnab", formData, {
+    await post("/cnab", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
     if (response.ok) {
       resetField("cnab");
-      setTransacoes(responseBody);
+      fetchTransacoes();
     }
   };
 
-  //   useEffect(() => {
-  //     fetchTransacoes();
-  //   }, []);
+  useEffect(() => {
+    fetchTransacoes();
+  }, []);
 
   const columns = [
     {
-      dataField: "tipoTransacaoId",
+      dataField: "tipoTransacao.descricao",
       text: "Tipo",
     },
     {
